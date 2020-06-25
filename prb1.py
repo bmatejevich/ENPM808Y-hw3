@@ -1,6 +1,5 @@
 from main import *
 
-
 def prb1main():
     """ TSP for the below listed points using SOM """
     tspPoints = np.array([
