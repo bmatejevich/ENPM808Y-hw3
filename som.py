@@ -6,23 +6,15 @@ def genNet(var):
 
 
 def sommain(input, output, itr):
-    # numpats = number of x,y data points
-    # maxneuron = number of neurons
-
-    # instarx initialized weights
-    # instary
-
+    """build SOM"""
     nbd = 6
     contractnbd = 1
     count = 0
-
     for epoch in range(itr):
         count = count + 1;
-
         eta = 0.9 * (1 - epoch / 1000)
         if epoch > 999:
             eta = 0.005
-
         for p in range(numpats):
             for indx in range(maxneuron):
                 for indy in range(maxneuron):

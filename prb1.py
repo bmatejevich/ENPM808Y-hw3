@@ -2,6 +2,7 @@ from ENPM808Y_HW3_Main import *
 
 
 def prb1main():
+    """ TSP for the below listed points using SOM """
     tspPoints = np.array([
         [0.2, 0.1],
         [0.15, 0.2],
@@ -32,8 +33,3 @@ def prb1main():
     plt.plot(route[:, 0], route[:, 1], color='r')
     plt.draw()
     plt.show()
-
-
-
-
-

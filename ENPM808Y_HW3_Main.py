@@ -6,24 +6,23 @@ import imutils
 import os
 import random
 
-
 from som import*
 from som2 import*
-
 from prb1 import*
 from prb2 import*
 from prb3 import*
 
-
 flag = False
 prgRun = True
 
-
-
 def main(prgRun):
-
+    """
+    Runs selected problem
+    1: TSP problem
+    2: Wine classification using SOM
+    3: Coverage planning using SOM
+    """
     problem=3
-
     if problem==1:
         prb1main()
     if problem==2:
@@ -31,11 +30,8 @@ def main(prgRun):
     if problem==3:
         prb3main()
 
-
     prgRun = False
     return prgRun
-
-
 
 if __name__ == '__main__':
     prgRun = True

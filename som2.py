@@ -2,20 +2,22 @@ from ENPM808Y_HW3_Main import *
 import math
 
 def genNet(row,col,problem):
+    """build an random net"""
     if problem == 1 or problem == 3:
         return np.random.rand(row, col)
     if problem == 2:
         net = np.random.rand(row,col,13)
         return net
 
-def euclidiean(selected,net,problem):
-
+def euclidean(selected,net,problem):
+    """calculate euclidean distance"""
     if problem == 1 or problem == 3:
         return np.linalg.norm(net - selected, axis=1)
     if problem == 2:
         return np.linalg.norm(net - selected, axis=2)
 
 def localize(center,sigma,domain,problem,net):
+    """find the neighborhood and adjust it"""
     if sigma < 1:
         sigma = 1
     if problem == 1 or problem == 3:
@@ -34,12 +36,8 @@ def localize(center,sigma,domain,problem,net):
         this = -(d * d) / (2 * (sigma * sigma))
         return np.exp(this)
 
-
-
-
-
 def som2Main(input, epoch, closeMethod,lr,pivot,sigma,problem,labels):
-
+    """ run SOM to create activation map and class map"""
     n = input.shape[0]*pivot
     print(n)
     if problem == 1 or problem == 3:
@@ -49,8 +47,6 @@ def som2Main(input, epoch, closeMethod,lr,pivot,sigma,problem,labels):
         net = genNet(n,n,problem)
         activationMap = np.zeros((n,n))
         classMap = np.zeros((n,n,2))
-
-
 
     for i in range(epoch):
         if i % 1000 ==0:
@@ -66,7 +62,7 @@ def som2Main(input, epoch, closeMethod,lr,pivot,sigma,problem,labels):
             elif label[2] == 1:
                 label = 3
         if closeMethod=='manhattan':
-             eucl=euclidiean(selected,net,problem)
+             eucl=euclidean(selected,net,problem)
              if problem == 1 or problem ==3:
                 minVal=min(eucl)
 
@@ -79,7 +75,6 @@ def som2Main(input, epoch, closeMethod,lr,pivot,sigma,problem,labels):
 
                  classMap[y,x,0] += int(label)
                  classMap[y,x,1] += 1
-
 
         if problem == 1 or problem == 3:
             localGuass=localize(minNdx,n//sigma,net.shape[0],problem,net)
@@ -100,5 +95,3 @@ def som2Main(input, epoch, closeMethod,lr,pivot,sigma,problem,labels):
         return net
     if problem == 2:
         return activationMap,classMap
-
-
