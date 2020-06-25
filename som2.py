@@ -1,4 +1,4 @@
-from ENPM808Y_HW3_Main import *
+from main import *
 import math
 
 def genNet(row,col,problem):

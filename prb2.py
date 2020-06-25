@@ -1,4 +1,4 @@
-from ENPM808Y_HW3_Main import *
+from main import *
 import re
 import ast
 np.set_printoptions(suppress=True)
